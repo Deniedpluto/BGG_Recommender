@@ -228,7 +228,7 @@ server <- function(input, output, session) {
   
   #####-- Reload User Data --#####
   observeEvent(input$reloaduser, {
-    
+    browser()
     if(length(grep("Invalid username", as.character(xml_find_all(read_xml(paste0(
       "https://www.boardgamegeek.com/xmlapi2/collection?username=", input$username, "&rated=1&stats=1&brief=1")), "//message")))) != 0) {
       
