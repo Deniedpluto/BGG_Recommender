@@ -83,8 +83,11 @@ con.sql("USE my_db")
 
 # Read from motherduck
 users = pl.DataFrame(con.sql("SELECT * FROM BGG.User_Refresh"))
-# con.sql("CREATE OR REPLACE TABLE MTG.CommanderDecksWRA AS SELECT * FROM 'Data/CommanderDecksWRA.csv'");
-# con.sql("CREATE OR REPLACE TABLE MTG.CommanderHistory AS SELECT * FROM 'Data/CommanderHistory.csv'");
+
+# Update users for the given range.
+for i in range(175, 213):
+    username = users['USERNAME'][i]
+    update_ratings(username)
 
 # Select a username and create the url for pulling collections
 #i = 0
@@ -94,9 +97,7 @@ print(username)
 update_ratings(username)
 # for username in users['USERNAME']:
 
-for i in range(175, 213):
-    username = users['USERNAME'][i]
-    update_ratings(username)
+
 
 ''' This was used for testing and will eventually be removed mcghltlll bjjldlj,.jbgvld 
 # This extracts the name of the first game in the collection
